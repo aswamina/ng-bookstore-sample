@@ -25,7 +25,7 @@ Sample Angular Bookstore to review books
 If you have deactivated the environment,  you can get back in by typing : workon <projectname>
 
 #Stopping the program
-To stop, simply kill off the python todo.py using Ctrl-C.
+To stop, simply kill off the python books.py using Ctrl-C.
 
 To get out of the virtualenv, at the command line, run:
 
