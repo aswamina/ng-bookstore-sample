@@ -2,11 +2,11 @@
 Sample Angular Bookstore to review books
 
 # System requirements
--Linux/UNIX like operating system or Windows Operating system
--Python 2.7
--pip
--virtualenv (for Python 2.7)
--Flask
+- Linux/UNIX like operating system or Windows Operating system
+- Python 2.7
+- pip
+- virtualenv (for Python 2.7)
+- Flask
 
 # Setting up
 -Install python
