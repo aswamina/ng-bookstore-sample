@@ -37,3 +37,6 @@ deactivate
 - Click on the Author tab to view the author
 - Click on the Reviews tab to see the reviews for the book. You can also submit a review for the book here
 - Invalid email addresses are validated with Red colored background
+
+#Tests
+I have not created any tests yet, will do some karma tests shortly
