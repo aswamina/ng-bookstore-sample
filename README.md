@@ -1,14 +1,14 @@
 # ng-bookstore-sample
 Sample Angular Bookstore to review books
 
-System requirements
-
-Linux/UNIX like operating system
+# System requirements
+Linux/UNIX like operating system or Windows Operating system
 Python 2.7
+pip
 virtualenv (for Python 2.7)
+Flask
 
-Setting up
-
+# Setting up
 Install python
 Install pip
 Install virtualenv : pip install virtualenv and pip install virtualenvwrapper.  on Windows, the latter is replaced by pip install virtualenvwrapper-win
