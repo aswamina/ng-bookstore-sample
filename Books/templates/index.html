@@ -1,104 +1,183 @@
 <!DOCTYPE html>
 <html ng-app="bookStore">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Geek Bookstore</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="static/css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+          rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+          rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
     <!-- Custom styles for this template -->
     <link href="static/css/store.css" rel="stylesheet">
 </head>
 
 <body>
-<header>
-    <h1 class="text-center">Geek BookStore</h1>
+<div class="brand">Geek BookStore</div>
+<div class="address-bar">An Angular store for geeky books</div>
+<div class="container">
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12 text-center">
+                {% raw %}
+                <div ng-controller="StoreController as storeCtrl">
+                    <div id="carousel-of-products" class="carousel slide">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators hidden-xs">
+                            <li data-target="#carousel-of-products" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-of-products" data-slide-to="1"></li>
+                            <li data-target="#carousel-of-products" data-slide-to="2"></li>
+                        </ol>
 
-    <h2 class="text-center">An Angular store for geeky books</h2>
-</header>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item" ng-class="{active:!$index}" ng-repeat="product in storeCtrl.products">
+                                <img class="img-responsive img-full" ng-src="{{product.images[0]}}"" alt="">
+                                <h2>{{selectedProduct.name}}</h2>
+                            </div>
+                        </div>
 
-<div class="container" role="main">
-
-    <div class="list-group">
-        {% raw %}
-        <div ng-controller="StoreController as storeCtrl">
-            <div class="list-group-item" ng-repeat="product in storeCtrl.products">
-                <h3>
-                    {{product.name}}
-                    <em class="pull-right">{{product.price | currency}}</em>
-                    <br>
-                    <img ng-src="{{product.images[0]}}"/>
-                </h3>
-
-
-                <section ng-init="tab = 1" ng-controller="PanelController as panelCtrl">
-                    <ul class="nav nav-pills">
-                        <li ng-class="{ active: panelCtrl.isSelected(1) }">
-                            <a href ng-click="panelCtrl.selectTab(1)">Description</a>
-                        </li>
-                        <li ng-class="{ active: panelCtrl.isSelected(2) }">
-                            <a href ng-click="panelCtrl.selectTab(2)">Author</a>
-                        </li>
-                        <li ng-class="{ active: panelCtrl.isSelected(3) }">
-                            <a href ng-click="panelCtrl.selectTab(3)">Reviews</a>
-                        </li>
-                    </ul>
-                    <div class="panel" ng-show="panelCtrl.isSelected(1)">
-                        <h4>Description </h4>
-
-                        <p>{{product.description}}</p>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-of-products" data-slide="prev">
+                            <span class="icon-prev"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-of-products" data-slide="next">
+                            <span class="icon-next"></span>
+                        </a>
                     </div>
+                    <div ng-model="storeCtrl.selectedProduct"><h2>PRODUCTY ISSY {{selectedProduct.name}}</h2></div>
+                    <div class="list-group">
+                        <div class="list-group-item" ng-model="selectedProduct">
+                            <h3>
+                                Product Name : {{selectedProductName}}
+                                <em class="pull-right">{{product.price | currency}}</em>
+                                <br>
+                            </h3>
 
-                    <div class="panel" ng-show="panelCtrl.isSelected(2)">
-                        <h4>Author </h4>
+                            <section ng-init="tab = 1" ng-controller="PanelController as panelCtrl">
+                                <ul class="nav nav-pills">
+                                    <li ng-class="{ active: panelCtrl.isSelected(1) }">
+                                        <a href ng-click="panelCtrl.selectTab(1)">Description</a>
+                                    </li>
+                                    <li ng-class="{ active: panelCtrl.isSelected(2) }">
+                                        <a href ng-click="panelCtrl.selectTab(2)">Author</a>
+                                    </li>
+                                    <li ng-class="{ active: panelCtrl.isSelected(3) }">
+                                        <a href ng-click="panelCtrl.selectTab(3)">Reviews</a>
+                                    </li>
+                                </ul>
+                                <div class="panel" ng-show="panelCtrl.isSelected(1)">
+                                    <h4>Description </h4>
 
-                        <p>{{product.author}}</p>
-                        <br>
+                                    <p>{{product.description}}</p>
+                                </div>
 
-                        <p>{{product.authorblurb}}</p>
+                                <div class="panel" ng-show="panelCtrl.isSelected(2)">
+                                    <h4>Author </h4>
+
+                                    <p>{{product.author}}</p>
+                                    <br>
+
+                                    <p>{{product.authorblurb}}</p>
+                                </div>
+
+                                <div class="panel" ng-show="panelCtrl.isSelected(3)">
+                                    <h4>Reviews </h4>
+                                    <blockquote ng-repeat="review in product.reviews">
+                                        <b>Stars: {{review.stars}}</b>
+                                        {{review.body}}
+                                        <br>
+                                        <cite>by: {{review.author}}</cite>
+                                    </blockquote>
+
+
+                                    <h4>Submit a Review</h4>
+
+                                    <form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
+                                          ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+                                        <select ng-model="reviewCtrl.review.stars" required>
+                                            <option value="1">1 star</option>
+                                            <option value="2">2 stars</option>
+                                            <option value="3">3 stars</option>
+                                            <option value="4">4 stars</option>
+                                            <option value="5">5 stars</option>
+                                        </select>
+                                        <br>
+                                        <textarea ng-model="reviewCtrl.review.body" required></textarea>
+                                        <br>
+                                        <label>by:</label>
+                                        <input name="author" ng-model="reviewCtrl.review.author" type="email" required/>
+                                        <input type="submit" value="Submit Review"/>
+                                    </form>
+                                </div>
+                            </section>
+                        </div>
                     </div>
+                    {% endraw %}
+                </div>
 
-                    <div class="panel" ng-show="panelCtrl.isSelected(3)">
-                        <h4>Reviews </h4>
-                        <blockquote ng-repeat="review in product.reviews">
-                            <b>Stars: {{review.stars}}</b>
-                            {{review.body}}
-                            <br>
-                            <cite>by: {{review.author}}</cite>
-                        </blockquote>
-
-
-                        <h4>Submit a Review</h4>
-
-                        <form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
-                              ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-                            <select ng-model="reviewCtrl.review.stars" required>
-                                <option value="1">1 star</option>
-                                <option value="2">2 stars</option>
-                                <option value="3">3 stars</option>
-                                <option value="4">4 stars</option>
-                                <option value="5">5 stars</option>
-                            </select>
-                            <br>
-                            <textarea ng-model="reviewCtrl.review.body" required></textarea>
-                            <br>
-                            <label>by:</label>
-                            <input name="author" ng-model="reviewCtrl.review.author" type="email" required/>
-                            <input type="submit" value="Submit Review"/>
-                        </form>
-                    </div>
-                </section>
+                <h2 class="brand-before">
+                    <small>Welcome to</small>
+                </h2>
+                <h1 class="brand-name">Business Casual</h1>
+                <hr class="tagline-divider">
+                <h2>
+                    <small>By
+                        <strong>Start Bootstrap</strong>
+                    </small>
+                </h2>
             </div>
         </div>
-        {% endraw %}
     </div>
 
-</div><!-- /.container -->
+</div>
+<!-- /.container -->
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>Copyright &copy; Your Website 2014</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="static/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="static/js/bootstrap.min.js"></script>
+
+<!-- Script to Activate the Carousel -->
+<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+
+
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
 <script src="static/js/app.js"></script>
 </body>
