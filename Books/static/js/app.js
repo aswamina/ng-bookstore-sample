@@ -1,16 +1,8 @@
 (function() {
     var app = angular.module('bookStore', []);
 
-    // Uncomment this section for obtaining the list of books from a local JSON object
-    /*
-        app.controller('StoreController', function(){
-        this.products = books;
-    });
-    */
-
     // This section obtains the list of books from a REST API
-    app.controller('StoreController', ['$scope','$http', function($scope, $http){
-        var selectedProduct;
+    app.controller('StoreController', ['$scope','$http', function($scope, $http) {
         var store = this ;
         store.products = [];
 
@@ -24,8 +16,9 @@
             var next = $(event.relatedTarget);
             var to = next.index();
             var direction = event.direction;
+
             $scope.selectedProduct = store.products[to];
-            console.log("selectedProduct =", $scope.selectedProduct);
+            store.selectedProduct = $scope.selectedProduct.name;
         });
     }]);
 
