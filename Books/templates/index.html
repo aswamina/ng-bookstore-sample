@@ -53,7 +53,6 @@
                         <div class="carousel-inner">
                             <div class="item" ng-class="{active:!$index}" ng-repeat="product in storeCtrl.products">
                                 <img class="img-responsive img-full" ng-src="{{product.images[0]}}"" alt="">
-                                <h2>{{selectedProduct.name}}</h2>
                             </div>
                         </div>
 
@@ -65,11 +64,10 @@
                             <span class="icon-next"></span>
                         </a>
                     </div>
-                    <div ng-model="storeCtrl.selectedProduct"><h2>PRODUCTY ISSY {{selectedProduct.name}}</h2></div>
                     <div class="list-group">
-                        <div class="list-group-item" ng-model="selectedProduct">
+                        <div class="list-group-item" ng-model="storeCtrl.selectedProduct">
                             <h3>
-                                Product Name : {{selectedProductName}}
+                                Product Name : {{selectedProduct.name}}
                                 <em class="pull-right">{{product.price | currency}}</em>
                                 <br>
                             </h3>
