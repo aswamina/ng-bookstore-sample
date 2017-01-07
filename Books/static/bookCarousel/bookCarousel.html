@@ -9,6 +9,7 @@
 
         <div class="item" ng-repeat="book in books" ng-class="{active:!$index}">
             <img class="img-responsive img-full" ng-src="{{book.images[0]}}" alt="">
+            <em class="pull-right"><b>Price:&nbsp</b>{{book.price | currency}}</em>
         </div>
 
 
