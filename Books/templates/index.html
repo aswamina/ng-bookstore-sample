@@ -40,32 +40,12 @@
         <div class="box">
             <div class="col-lg-12 text-center">
                 {% raw %}
-                <div ng-controller="StoreController as storeCtrl">
-                    <div id="carousel-of-products" class="carousel slide">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#carousel-of-products" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-of-products" data-slide-to="1"></li>
-                            <li data-target="#carousel-of-products" data-slide-to="2"></li>
-                        </ol>
+                <div ng-controller="StoreCtrl">
 
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item" ng-class="{active:!$index}" ng-repeat="product in storeCtrl.products">
-                                <img class="img-responsive img-full" ng-src="{{product.images[0]}}"" alt="">
-                            </div>
-                        </div>
+                    <book-carousel />
 
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-of-products" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-of-products" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
                     <div class="list-group">
-                        <div class="list-group-item" ng-model="storeCtrl.selectedProduct">
+                        <div class="list-group-item" ng-model="StoreCtrl.selectedProduct">
                             <h3>
                                 Product Name : {{selectedProduct.name}}
                                 <em class="pull-right">{{product.price | currency}}</em>
@@ -177,6 +157,8 @@
 
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
-<script src="static/js/app.js"></script>
+<script src="static/app.js"></script>
+<script src="static/bookCarousel/bookCarousel.js"></script>
+<script src="static/bookDetail/bookController.js"></script>
 </body>
 </html>
