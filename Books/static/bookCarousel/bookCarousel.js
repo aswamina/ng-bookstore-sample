@@ -12,8 +12,8 @@
                     var to = next.index();
                     var direction = event.direction;
 
-                    scope.selectedBook = scope.books[to].name;
-                    console.log("selectedBook", scope.selectedBook);
+                    scope.selectedBook = scope.books[to];
+                    console.log("selectedBook", scope.selectedBook.name);
                 });
             }
         };
