@@ -1,47 +1,33 @@
-<div class="list-group">
-    <div class="list-group-item">
-
-        <h3>
-            Product Name : {{selectedBook.name}}
-            <em class="pull-right">{{selectedBook.price | currency}}</em>
-            <br>
-        </h3>
-
-
-    </div>
-</div>
-
-
 <section ng-init="tab = 1" ng-controller="bookPanelCtrl">
+
     <ul class="nav nav-pills">
-        <li ng-class="{ active: bookPanelCtrl.isTabSelected(1) }">
-            <a href ng-click="bookPanelCtrl.selectTab(1)">Description</a>
+        <li ng-class="{ active: isTabSelected(1) }">
+            <a href ng-click="selectTab(1)">Description</a>
         </li>
-        <li ng-class="{ active: bookPanelCtrl.isTabSelected(2) }">
-            <a href ng-click="bookPanelCtrl.selectTab(2)">Author</a>
+        <li ng-class="{ active: isTabSelected(2) }">
+            <a href ng-click="selectTab(2)">Author</a>
         </li>
-        <li ng-class="{ active: bookPanelCtrl.isTabSelected(3) }">
-            <a href ng-click="bookPanelCtrl.selectTab(3)">Reviews</a>
+        <li ng-class="{ active: isTabSelected(3) }">
+            <a href ng-click="selectTab(3)">Reviews</a>
         </li>
     </ul>
-    <div class="panel" ng-show="bookPanelCtrl.isSelected(1)">
-        <h4>Description </h4>
-
+    <div class="panel" ng-show="isTabSelected(1)">
+        <h4>Description</h4>
         <p>{{selectedBook.description}}</p>
     </div>
 
-    <div class="panel" ng-show="bookPanelCtrl.isSelected(2)">
+    <div class="panel" ng-show="isTabSelected(2)">
         <h4>Author </h4>
 
-        <p>{{product.author}}</p>
+        <p>{{selectedBook.author}}</p>
         <br>
 
-        <p>{{product.authorblurb}}</p>
+        <p>{{selectedBook.authorblurb}}</p>
     </div>
 
-    <div class="panel" ng-show="bookPanelCtrl.isSelected(3)">
+    <div class="panel" ng-show="isTabSelected(3)">
         <h4>Reviews </h4>
-        <blockquote ng-repeat="review in product.reviews">
+        <blockquote ng-repeat="review in selectedBook.reviews">
             <b>Stars: {{review.stars}}</b>
             {{review.body}}
             <br>
@@ -52,7 +38,7 @@
         <h4>Submit a Review</h4>
 
         <form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
-              ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+              ng-submit="reviewForm.$valid && reviewCtrl.addReview(selectedBook)" novalidate>
             <select ng-model="reviewCtrl.review.stars" required>
                 <option value="1">1 star</option>
                 <option value="2">2 stars</option>
