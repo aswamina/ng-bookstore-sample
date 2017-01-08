@@ -1,7 +1,7 @@
 (function() {
     angular.module('bookStore').controller('bookPanelCtrl', ['$scope', function($scope) {
         console.log("in panel controller");
-        $scope.tab = 1;
+        $scope.tab = 0;
 
         $scope.selectTab = function(setTab) {
             $scope.tab = setTab;
