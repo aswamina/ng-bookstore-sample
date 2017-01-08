@@ -25,12 +25,14 @@
 
                 $("#carousel-of-books").on('mouseleave', function(event) {
                     scope.activateBookPanel = false;
+                    $("#carousel-of-books").carousel('cycle');
                     console.log("activateBookPanel=", scope.activateBookPanel);
                 });
 
                 $(".carousel-indicators").on('click', function(event) {
                     scope.activateBookPanel = false;
-                    console.log("activateBookPanel=", scope.activateBookPanel);
+                    scope.setTab(0);
+                    console.log("indicators activateBookPanel=", scope.activateBookPanel);
                 });
             }
         };
