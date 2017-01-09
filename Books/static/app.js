@@ -1,6 +1,6 @@
 (function() {
     var app = angular.module('bookStore', []);
-
+    /*
     app.controller('ReviewController', function() {
         this.review = {};
 
@@ -9,4 +9,5 @@
             this.review = {};
         }
     });
+    */
 })();
