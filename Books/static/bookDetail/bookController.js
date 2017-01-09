@@ -5,11 +5,14 @@
             $scope.books = data;
         });
 
-        $scope.expandBookPanel = function() {
+
+        $scope.expandBookPanel = function(event) {
+            console.log("sent event to expand BookPanel");
             $rootScope.$broadcast("bookPanel:expand");
         };
 
-        $scope.collapseBookPanel = function() {
+        $scope.collapseBookPanel = function(event) {
+            console.log("sent event to collapse book panel");
             $rootScope.$broadcast("bookPanel:collapse");
         };
     }]);
