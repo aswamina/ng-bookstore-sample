@@ -15,15 +15,15 @@
 
                     scope.selectedBookIndex = to;
                     scope.selectedBook = scope.books[to];
-                    console.log("selectedBook", scope.selectedBook.name);
+                    //console.log("selectedBook", scope.selectedBook.name);
                 });
-/*
+
                 $("#carousel-of-books").on('click', function(event) {
                     scope.expandBookPanel();
                 });
-*/
+
                 $("#carousel-of-books").on('mouseleave', function(event) {
-                    //scope.collapseBookPanel();
+                    scope.collapseBookPanel();
                     $("#carousel-of-books").carousel('cycle');
                 });
 /*
