@@ -17,23 +17,22 @@
                     scope.selectedBook = scope.books[to];
                     console.log("selectedBook", scope.selectedBook.name);
                 });
-
+/*
                 $("#carousel-of-books").on('click', function(event) {
-                    scope.activateBookPanel = true;
-                    console.log("activateBookPanel=", scope.activateBookPanel);
+                    scope.expandBookPanel();
                 });
-
+*/
                 $("#carousel-of-books").on('mouseleave', function(event) {
-                    scope.activateBookPanel = false;
+                    //scope.collapseBookPanel();
                     $("#carousel-of-books").carousel('cycle');
-                    console.log("activateBookPanel=", scope.activateBookPanel);
                 });
-
+/*
                 $(".carousel-indicators").on('click', function(event) {
-                    scope.activateBookPanel = false;
+                    scope.collapseBookPanel();
                     scope.setTab(0);
-                    console.log("indicators activateBookPanel=", scope.activateBookPanel);
+                    console.log("collapsing book panel");
                 });
+*/
             }
         };
     });
