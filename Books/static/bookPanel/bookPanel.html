@@ -1,7 +1,6 @@
 <div ng-init="tab = 0" ng-controller="bookPanelCtrl" ng-model="openBookPanel.state">
-    <p><<font color="white">OpenBookPanel: {{openBookPanel.state}}</font></p>
     <div class="panel with-nav-tabs panel-info">
-        <div class="panel-heading">
+        <div class="panel-heading" data-toggle="tooltip" title="Select a book and click on any tab to view the details!">
             <ul class="nav nav-tabs">
                 <li ng-class="{ active: isTabSelected(1) }">
                     <a href="#tabDescription" ng-click="selectTab(1)" data-toggle="tab">Description</a>
@@ -15,7 +14,7 @@
             </ul>
         </div>
         <div class="panel-body" ng-show="openBookPanel.state">
-            <button type="button" class="close" aria-label="Close" ng-click="setBookPanelStatus(false)">
+            <button type="button" id="bookPanelCloseBtn" class="close" aria-label="Close" ng-click="setBookPanelStatus(false)">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="tab-content">
@@ -51,4 +50,8 @@
             </div>
         </div>
     </div>
+
+    <!--
+    <p><<font color="white">OpenBookPanel: {{openBookPanel.state}}</font></p>
+    -->
 </div>
