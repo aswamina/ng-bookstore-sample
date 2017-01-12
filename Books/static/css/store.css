@@ -6,6 +6,9 @@
 	border-color: green;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none 'important;
+}
 
 .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
