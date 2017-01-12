@@ -33,48 +33,53 @@
 </head>
 
 <body>
-<div class="brand">Geek BookStore</div>
-<div class="address-bar">An Angular store for reviewing geeky books</div>
-<div class="container-fluid">
-    <div ng-controller="StoreCtrl">
-        <div class="row">
+    <div class="brand">Geek BookStore</div>
+    <div class="address-bar">An Angular store for reviewing geeky books</div>
+    <div class="container-fluid">
+        <div ng-controller="StoreCtrl">
+            {{ready}}
+            <center>
+                <img src="static/images/gears.svg" ng-hide="ready" />
+                <div class="address-bar" ng-hide="ready">Loading ...</div>
+            </center>
 
-                <div class="col-sm-6">
+            <div ng-cloak class="row">
+
+                <div class="col-sm-6" ng-show="ready">
 
                     <book-panel />
 
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-6" ng-show="ready">
 
                     <book-carousel />
 
                 </div>
 
+            </div>
         </div>
-
     </div>
-</div>
-<!-- /.container -->
+    <!-- /.container -->
 
-<!-- jQuery -->
-<script src="static/js/jquery.js"></script>
+    <!-- jQuery -->
+    <script src="static/js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="static/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
 
-<!-- Angular JS file -->
-<script src="static/js/angular.min.js"></script>
-<!-- Script to Activate the Carousel -->
-<script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-</script>
-<script src="static/app.js"></script>
-<script src="static/bookCarousel/bookCarousel.js"></script>
-<script src="static/bookDetail/bookController.js"></script>
-<script src="static/bookPanel/bookPanelDirective.js"></script>
-<script src="static/bookPanel/bookPanelCtrl.js"></script>
+    <!-- Angular JS file -->
+    <script src="static/js/angular.min.js"></script>
+    <!-- Script to Activate the Carousel -->
+    <script>
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
+    </script>
+    <script src="static/app.js"></script>
+    <script src="static/bookCarousel/bookCarousel.js"></script>
+    <script src="static/bookDetail/bookController.js"></script>
+    <script src="static/bookPanel/bookPanelDirective.js"></script>
+    <script src="static/bookPanel/bookPanelCtrl.js"></script>
 </body>
 </html>
