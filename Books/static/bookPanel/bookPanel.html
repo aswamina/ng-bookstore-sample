@@ -1,4 +1,5 @@
-<div ng-init="tab = 0" ng-controller="bookPanelCtrl" ng-model="openBookPanel.state">
+<div ng-init="tab = 0" ng-controller="bookPanelCtrl">
+
     <div class="panel with-nav-tabs panel-info">
         <div class="panel-heading" data-toggle="tooltip" title="Select a book and click on any tab to view the details!">
             <ul class="nav nav-tabs">
@@ -14,12 +15,12 @@
             </ul>
         </div>
         <div class="panel-body" ng-show="openBookPanel.state">
-            <button type="button" id="bookPanelCloseBtn" class="close" aria-label="Close" ng-click="setBookPanelStatus(false)">
+            <button type="button" id="bookPanelCloseBtn" class="close" aria-label="Close" ng-click="clearTab()">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="tab-content">
-                <div class="tab-pane fade in" ng-class="{ active: isTabSelected(1) }" id="tabDescription">{{selectedBook.description}}</div>
-                <div class="tab-pane fade in" ng-class="{ active: isTabSelected(2) }" id="tabAuthor">{{selectedBook.authorblurb}}</div>
+                <div class="tab-pane fade in" ng-class="{ active: isTabSelected(1) }" ng-bind="selectedBook.description" id="tabDescription"></div>
+                <div class="tab-pane fade in" ng-class="{ active: isTabSelected(2) }" ng-bind="selectedBook.authorblurb" id="tabAuthor"></div>
                 <div class="tab-pane fade in" ng-class="{ active: isTabSelected(3) }" id="tabReview">
                     <blockquote ng-repeat="review in selectedBook.reviews">
                         <b>Stars: {{review.stars}}</b>
@@ -50,8 +51,8 @@
             </div>
         </div>
     </div>
-
     <!--
-    <p><<font color="white">OpenBookPanel: {{openBookPanel.state}}</font></p>
+        <p><<font color="white">OpenBookPanel: {{openBookPanel.state}}</font></p>
+        <p><<font color="white">SelectedBook: {{selectedBook.name}}</font></p>
     -->
 </div>
