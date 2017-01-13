@@ -2,10 +2,16 @@
     angular.module('bookStore').controller('StoreCtrl', ['$scope','$http', '$rootScope', 'BookService', function($scope, $http, $rootScope, BookService) {
         $scope.ready = false;
 
+        $scope.updateSelectedBook = function(index) {
+            $scope.selectedBook = $scope.books[index];
+            console.log("selectedBook", $scope.selectedBook.name);
+            $scope.$apply();
+        };
+
         var onBooksComplete = function (data) {
             $scope.books = data;
+            $scope.updateSelectedBook(0);
             $scope.ready = true;
-            $scope.selectedBook = $scope.books[0];
         };
 
         var onError = function (reason) {
@@ -13,6 +19,7 @@
         };
 
         BookService.getBooks().then(onBooksComplete, onError);
+
 
         $scope.expandBookPanel = function(event) {
             console.log("sent event to expand BookPanel");
