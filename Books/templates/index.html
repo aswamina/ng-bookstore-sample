@@ -35,15 +35,15 @@
 <body>
     <div class="brand">Geek BookStore</div>
     <div class="address-bar">An Angular store for reviewing geeky books</div>
-    <div class="container-fluid">
-        <div ng-controller="StoreCtrl">
+    <div class="container-fluid"  ng-controller="StoreCtrl">
+        <div>
             {{ready}}
             <center>
                 <img src="static/images/gears.svg" ng-hide="ready" />
                 <div class="address-bar" ng-hide="ready">Loading ...</div>
             </center>
 
-            <div ng-cloak class="row">
+            <div class="row" ng-cloak>
 
                 <div class="col-sm-6" ng-show="ready">
 
