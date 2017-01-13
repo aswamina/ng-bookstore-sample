@@ -3,9 +3,10 @@
         return {
             restrict: 'E',
             templateUrl: 'static/bookCarousel/bookCarousel.html',
+            controller: 'StoreCtrl',
             link : function(scope, element, attrs) {
                 //Add event listener for 'slide' event
-                element.on('slide.bs.carousel', function(event) {
+                var getSelectedBookIndex = function(event) {
 
                     var active = $(event.target).find('.carousel-inner > .item.active');
                     var from = active.index();
@@ -13,9 +14,13 @@
                     var to = next.index();
                     var direction = event.direction;
 
-                    scope.selectedBookIndex = to;
-                    scope.selectedBook = scope.books[to];
-                    //console.log("selectedBook", scope.selectedBook.name);
+                    return to;
+
+                }
+
+                element.on('slide.bs.carousel', function(event) {
+                    var bookIndex = getSelectedBookIndex(event);
+                    scope.updateSelectedBook(bookIndex);
                 });
 
                 $("#carousel-of-books").on('click', function(event) {
@@ -23,16 +28,9 @@
                 });
 
                 $("#carousel-of-books").on('mouseleave', function(event) {
-                    scope.collapseBookPanel();
+                    //scope.collapseBookPanel();
                     $("#carousel-of-books").carousel('cycle');
                 });
-/*
-                $(".carousel-indicators").on('click', function(event) {
-                    scope.collapseBookPanel();
-                    scope.setTab(0);
-                    console.log("collapsing book panel");
-                });
-*/
             }
         };
     });
