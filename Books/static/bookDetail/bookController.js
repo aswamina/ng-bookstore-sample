@@ -1,12 +1,18 @@
 (function() {
-    angular.module('bookStore').controller('StoreCtrl', ['$scope','$http', '$rootScope', function($scope, $http, $rootScope) {
+    angular.module('bookStore').controller('StoreCtrl', ['$scope','$http', '$rootScope', 'BookService', function($scope, $http, $rootScope, BookService) {
         $scope.ready = false;
 
-        $http.get('http://127.0.0.1:5000/getBooks').success(function(data) {
+        var onBooksComplete = function (data) {
             $scope.books = data;
             $scope.ready = true;
-        });
+            $scope.selectedBook = $scope.books[0];
+        };
 
+        var onError = function (reason) {
+            $scope.error = 'Could not fetch the books data.';
+        };
+
+        BookService.getBooks().then(onBooksComplete, onError);
 
         $scope.expandBookPanel = function(event) {
             console.log("sent event to expand BookPanel");
