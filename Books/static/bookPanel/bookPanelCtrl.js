@@ -1,7 +1,8 @@
 (function() {
     angular.module('bookStore').controller('bookPanelCtrl', ['$scope', function($scope) {
         console.log("in panel controller");
-        //$scope.tab = 0;
+        var tab = 0;
+
         $scope.setBookPanelStatus = function(status) {
             $scope.openBookPanel = {
                 state: status
@@ -9,22 +10,25 @@
         };
 
         $scope.selectTab = function(setTab) {
-            $scope.tab = setTab;
+            tab = setTab;
             $scope.setBookPanelStatus(true);
         };
 
         $scope.isTabSelected = function(checkTab) {
-            return $scope.tab === checkTab;
+            return tab === checkTab;
         };
 
+        $scope.clearTab = function() {
+            tab = 0;
+            $scope.setBookPanelStatus(false);
+        }
 
         $scope.$on("bookPanel:expand", function(event) {
-            $scope.setBookPanelStatus(true);
+            $scope.selectTab(1);
         });
 
         $scope.$on("bookPanel:collapse", function(event) {
-            $scope.setBookPanelStatus(false);
-            $scope.selectTab(0);
+            $scope.clearTab();
         });
 
         $scope.setBookPanelStatus(false);
