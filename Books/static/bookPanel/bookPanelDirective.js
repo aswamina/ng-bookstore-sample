@@ -3,14 +3,14 @@
         return {
             restrict: 'E',
             templateUrl: 'static/bookPanel/bookPanel.html',
+            controller: 'bookPanelCtrl',
             link: function(scope, element, attrs) {
-                // CREATE A LINK FUNCTION HERE THAT IMPLEMENTS THE FOLLOWING CODE
-                // $("#myCarousel").pause()
 
-                element.on('click', function() {
+                element.on('click', function(event) {
                     $("#carousel-of-books").carousel(scope.selectedBookIndex);
                     $("#carousel-of-books").carousel('pause');
                 });
+
             }
         };
     });
