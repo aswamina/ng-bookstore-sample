@@ -5,7 +5,7 @@
         $scope.updateSelectedBook = function(index) {
             $scope.selectedBook = $scope.books[index];
             console.log("selectedBook", $scope.selectedBook.name);
-            $scope.$apply();
+            $scope.$applyAsync();
         };
 
         var onBooksComplete = function (data) {
